@@ -1,13 +1,21 @@
-package = 'str'
-version = '0.1.0-0'
+-- This file was automatically generated for the LuaDist project.
 
+package = 'str'
+version = '0.1.1-0'
+
+-- LuaDist source
 source = {
-  url = 'git://github.com/evandrolg/pegasus.lua.git',
-  tag = 'v1.0.0'
+  tag = "0.1.1-0",
+  url = "git://github.com/LuaDist-testing/str.git"
 }
+-- Original source
+-- source = {
+--   url = 'git://github.com/evandrolg/str.git',
+--   tag = 'v1.0.0'
+-- }
 
 description = {
-  summary = 'str is an string module with useful methods that don't exist in Lua core',
+  summary = 'str is an string module with useful methods that do not exist in Lua core',
   homepage = 'https://github.com/EvandroLG/str',
   maintainer = 'Evandro Leopoldino Gonçalves (@evandrolg) <evandrolgoncalves@gmail.com>',
   license = 'MIT <http://opensource.org/licenses/MIT>'
