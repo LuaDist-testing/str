@@ -1,9 +1,5 @@
 local utf8 = require 'lua-utf8'
 
-local function ternary(conditional, when_true, when_false)
-    return conditional and when_true or when_false
-end
-
 local function to_bool(value)
     return not not value
 end
@@ -48,7 +44,7 @@ local str = {
 
 str = {
     slice = function(s, start, finish)
-        return string.sub(s, start, ternary(finish, finish, #s))
+        return string.sub(s, start, finish or #s)
     end,
 
     starts_with = function(s, start)
@@ -61,13 +57,16 @@ str = {
 
     count = function(s, substr)
         local total = 0
-        local size_substr = #substr
+        local start = nil
+        local finish = 1
 
-        for i=1, #s do
-            if string.sub(s, i, (i-1) + size_substr) == substr then
+        repeat
+            start, finish = string.find(s, substr, finish, true)
+
+            if start then
                 total = total + 1
             end
-        end
+        until start == nil
 
         return total
     end,
@@ -175,7 +174,7 @@ str = {
     end,
 
     is_number = function(s)
-        return to_bool(string.find(s, '^%d*$'))
+        return to_bool(string.find(s, '^%d+$'))
     end
 }
 
