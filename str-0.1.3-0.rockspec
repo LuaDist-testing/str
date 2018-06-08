@@ -1,17 +1,17 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = 'str'
-version = '0.1.2-0'
+version = '0.1.3-0'
 
 -- LuaDist source
 source = {
-  tag = "0.1.2-0",
+  tag = "0.1.3-0",
   url = "git://github.com/LuaDist-testing/str.git"
 }
 -- Original source
 -- source = {
 --   url = 'git://github.com/evandrolg/str.git',
---   tag = 'v1.0.1'
+--   tag = 'v1.0.2'
 -- }
 
 description = {
