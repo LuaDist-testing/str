@@ -15,7 +15,7 @@ local function get_list_chars(s)
 end
 
 local str = {
-    __VERSION = '1.0.0',
+    __VERSION = '1.4.0',
     __DESCRIPTION = '',
     __LICENCE = [[
         The MIT License (MIT)
@@ -163,6 +163,24 @@ str = {
 
     is_number = function(s)
         return to_bool(string.find(s, '^%d+$'))
+    end,
+
+    each_char = function(s, callback)
+        for i=1, #s do
+            callback(s:sub(i, i))
+        end
+    end,
+
+    each_byte = function(s, callback)
+        str.each_char(s, function(char)
+            callback(char:byte())
+        end)
+    end,
+
+    each_line = function(s, callback)
+        for line in string.gmatch(s, '[^\n]+') do
+            callback(line)
+        end
     end
 }
 

@@ -86,11 +86,11 @@ test('is_number should returns false when value is empty', function()
     assert_equal(str.is_number(''), false)
 end)
 
-test('center should return centralized string', function()
+test('center should returns centralized string', function()
     assert_equal(str.center('lua', 3), '   lua   ')
 end)
 
-test('split should return a table resultant from the splited string', function()
+test('split should returns a table resultant from the splited string', function()
     local result = str.split('lua is a great language', ' ')
 
     assert_equal(#result, 5)
@@ -101,12 +101,48 @@ test('split should return a table resultant from the splited string', function()
     assert_equal(result[5], 'language')
 end)
 
-test('slug should return a new lowercase string and without spaces', function()
+test('slug should returns a new lowercase string and without spaces', function()
     local result = str.slug('Lua is a great language')
     assert_equal(result, 'lua-is-a-great-language')
 end)
 
-test('slug should return a new string without accents', function()
+test('slug should returns a new string without accents', function()
     local result = str.slug('Lua é uma ótima linguagem')
     assert_equal(result, 'lua-e-uma-otima-linguagem')
+end)
+
+test('each_char should returns every character of the string', function()
+    local result = {}
+    str.each_char('lua', function(char)
+        table.insert(result, char)
+    end)
+
+    assert_equal(#result, 3)
+    assert_equal(result[1], 'l')
+    assert_equal(result[2], 'u')
+    assert_equal(result[3], 'a')
+end)
+
+test('each_byte should returns the byte of every character of the string', function()
+    local result = {}
+    str.each_byte('lua', function(char)
+        table.insert(result, char)
+    end)
+
+    assert_equal(#result, 3)
+    assert_equal(result[1], 108)
+    assert_equal(result[2], 117)
+    assert_equal(result[3], 97)
+end)
+
+test('each_line should returns every line of the string', function()
+    local result = {}
+    str.each_line('lua\nruby\npython', function(line)
+        table.insert(result, line)
+    end)
+
+    assert_equal(#result, 3)
+    assert_equal(result[1], 'lua')
+    assert_equal(result[2], 'ruby')
+    assert_equal(result[3], 'python')
 end)
